@@ -18,8 +18,8 @@ def contact(request):
     """
     return render(request, 'contact.html')
 
-def product(request, product_id):
+def projects(request, product_id):
     """
-    Отображает страницу товара с указанным ID.
+    Отображает страницу со всеми проектами.
     """
     pass

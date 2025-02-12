@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 * {
   box-sizing: border-box;
 }
 
-body {
+body.white {
   --main-bg: #f5f4fd;
   --item-hover: #f9f8fb;
   --secondary-bg: #251d33;
@@ -12,7 +12,7 @@ body {
   --text-color: #00071d;
 }
 
-body.dark {
+body {
   --main-bg: #00071d;
   --item-hover: #1c2339;
   --secondary-bg: #36415e;
@@ -26,14 +26,13 @@ html, body {
   width: 100%;
   margin: 0;
   height: 100%;
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu Mono", sans-serif;
 }
 
 body {
   background-color: var(--main-bg);
   transition: 0.3s ease-in-out;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
@@ -54,7 +53,10 @@ body {
   border-radius: 10px;
   padding: 16px;
   transition: width 0.3s ease-in-out;
-  position: relative;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
   width: 240px;
   height: 100vh;
   max-height: 600px;
@@ -69,7 +71,7 @@ body {
   position: absolute;
 }
 .sidebar-themeInputText {
-  font-size: 14px;
+  font-size: 20px;
   opacity: 1;
   transform: translatex(0);
   transition: 0.2s ease-in-out;
@@ -85,10 +87,10 @@ body {
 .sidebar-themeType {
   width: 50%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: left;
+  justify-content: left;
   padding: 12px 8px;
-  text-align: center;
+  text-align: left;
   z-index: 1;
   flex-shrink: 0;
   line-height: 20px;
@@ -217,8 +219,8 @@ body {
   cursor: pointer;
 }
 .sidebar-listIcon {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   display: inline-block;
   margin-right: 8px;
   flex-shrink: 0;
@@ -277,7 +279,7 @@ body {
   opacity: 0;
   background-color: var(--secondary-bg);
   color: #fff;
-  font-size: 12px;
+  font-size: 14px;
   border-radius: 4px;
   transition: left 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
