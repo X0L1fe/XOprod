@@ -10,7 +10,13 @@ const Sidebar = () => {
 
   const handleThemeChange = () => {
     setIsDarkMode(!isDarkMode);
-    document.body.classList.toggle("white");
+    const sidebarRoot = document.querySelector('.sidebar-root');
+    sidebarRoot.classList.toggle("white");
+
+    const nicepageElements = document.querySelectorAll('.u-black, .u-body.u-black');
+    nicepageElements.forEach(element => {
+    element.classList.toggle('white');
+  });
   };
 
   return /*#__PURE__*/(

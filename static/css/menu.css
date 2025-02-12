@@ -1,35 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-* {
-  box-sizing: border-box;
+
+
+.sidebar-root.white {
+  --main-bg: #d4d4d4;
+  --item-hover: #cccccc;
+  --secondary-bg: #c7c7c7;
+  --main-container-bg: #ffffff;
+  --container-shadow: rgba(48, 48, 48, 0.2) 0px 7px 29px 0px;
+  --text-color: #000000;
 }
 
-body.white {
-  --main-bg: #f5f4fd;
-  --item-hover: #f9f8fb;
-  --secondary-bg: #251d33;
-  --main-container-bg: #fff;
-  --container-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  --text-color: #00071d;
+.sidebar-root {
+  --main-bg: #000000; /* фон активной кнопки + переключателя */
+  --item-hover: #161618; /* фон при наведении на кнопки + линии */
+  --secondary-bg: #1d1d1f; /* стрелка + тултип */
+  --main-container-bg: #111111; /* общий фон + переключатель */
+  --text-color: #fff; /* текст */
+  --container-shadow: rgba( #311313, 0.2) 0px 7px 29px 0px; /* тень вокруг меню */
 }
 
-body {
-  --main-bg: #00071d;
-  --item-hover: #1c2339;
-  --secondary-bg: #36415e;
-  --main-container-bg: #131c31;
-  --text-color: #fff;
-  --tooltip-bg: #251d33;
-  --container-shadow: rgba( #131c31, 0.2) 0px 7px 29px 0px;
-}
-
-html, body {
+.sidebar-root {
   width: 100%;
   margin: 0;
   height: 100%;
   font-family: "Ubuntu Mono", sans-serif;
-}
-
-body {
   background-color: var(--main-bg);
   transition: 0.3s ease-in-out;
   display: flex;
@@ -60,6 +54,7 @@ body {
   width: 240px;
   height: 100vh;
   max-height: 600px;
+  z-index: 1000;
 }
 .sidebar-container.shrink {
   width: 92px;
@@ -270,6 +265,7 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 20px;
+  color: var(--text-color) !important;
 }
 
 .shrink .sidebar-listItemText {
@@ -326,4 +322,8 @@ body {
     transform: translatex(0px);
     opacity: 1;
   }
+}
+
+.sidebar-root .sidebar-listItem a {
+  color: var(--text-color) !important; /* Переопределяем цвет ссылок */
 }
