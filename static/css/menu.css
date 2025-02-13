@@ -1,7 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+:root {
+  --main-bg: #000000; /* фон активной кнопки + переключателя */
+  --item-hover: #161618; /* фон при наведении на кнопки + линии */
+  --secondary-bg: #1d1d1f; /* стрелка + тултип */
+  --main-container-bg: #111111; /* общий фон + переключатель */
+  --text-color: #fff; /* текст */
+  --container-shadow: rgba( #311313, 0.2) 0px 7px 29px 0px; /* тень вокруг меню */
+}
 
-.sidebar-root.white {
+.white {
   --main-bg: #d4d4d4;
   --item-hover: #cccccc;
   --secondary-bg: #c7c7c7;
@@ -10,13 +18,14 @@
   --text-color: #000000;
 }
 
-.sidebar-root {
-  --main-bg: #000000; /* фон активной кнопки + переключателя */
-  --item-hover: #161618; /* фон при наведении на кнопки + линии */
-  --secondary-bg: #1d1d1f; /* стрелка + тултип */
-  --main-container-bg: #111111; /* общий фон + переключатель */
-  --text-color: #fff; /* текст */
-  --container-shadow: rgba( #311313, 0.2) 0px 7px 29px 0px; /* тень вокруг меню */
+/* По умолчанию (темная тема) – иконка остается белой */
+.u-icon.u-file-icon > img[src] {
+  filter: invert(0); /* Без изменений */
+}
+
+/* В светлой теме – инвертируем цвет, делая иконку темной */
+.white .u-icon.u-file-icon > img[src] {
+  filter: invert(1);
 }
 
 .sidebar-root {
@@ -52,8 +61,8 @@
   transform: translateY(-50%);
   left: 0;
   width: 240px;
-  height: 100vh;
-  max-height: 600px;
+  /* height: 80vh; */
+  /* max-height: 600px; */
   z-index: 1000;
 }
 .sidebar-container.shrink {

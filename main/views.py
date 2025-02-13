@@ -16,7 +16,7 @@ def contact(request):
     """
     Отображает страницу "Контакты".
     """
-    return render(request, 'contact.html')
+    return render(request, 'contacts.html')
 
 def projects(request, product_id):
     """

@@ -1,22 +1,39 @@
-const { useState } = React;
+const { useState, useEffect } = React;
 
 const Sidebar = () => {
-  const [isShrinkView, setIsShrinkView] = React.useState(false);
-  const [isDarkMode, setIsDarkMode] = React.useState(false);
+  const [isShrinkView, setIsShrinkView] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    // По умолчанию тёмная тема, если в localStorage нет значения
+    return localStorage.getItem('theme') !== 'light';
+  });
+
+  // Применяем тему при загрузке компонента и при изменении isDarkMode
+  useEffect(() => {
+    applyTheme(isDarkMode);
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+  }, [isDarkMode]);
 
   const handleSidebarView = () => {
     setIsShrinkView(!isShrinkView);
   };
 
-  const handleThemeChange = () => {
-    setIsDarkMode(!isDarkMode);
+  // Функция для применения темы
+  const applyTheme = (isDark) => {
     const sidebarRoot = document.querySelector('.sidebar-root');
-    sidebarRoot.classList.toggle("white");
-
     const nicepageElements = document.querySelectorAll('.u-black, .u-body.u-black');
-    nicepageElements.forEach(element => {
-    element.classList.toggle('white');
-  });
+
+    if (isDark) {
+      sidebarRoot.classList.remove("white");
+      nicepageElements.forEach(element => element.classList.remove("white"));
+    } else {
+      sidebarRoot.classList.add("white");
+      nicepageElements.forEach(element => element.classList.add("white"));
+    }
+  };
+
+  const handleThemeChange = () => {
+    const newDarkMode = !isDarkMode; // Инвертируем текущую тему
+    setIsDarkMode(newDarkMode); // Обновляем состояние
   };
 
   return /*#__PURE__*/(
@@ -53,8 +70,11 @@ const Sidebar = () => {
       className: "sidebar-themeInput",
       type: "checkbox",
       id: "theme-toggle",
-      onChange: handleThemeChange }), /*#__PURE__*/
+      onChange: handleThemeChange,
+      checked: !isDarkMode
+     }), /*#__PURE__*/
 
+    //ff
     React.createElement("div", { className: "sidebar-themeType light" }, /*#__PURE__*/
     React.createElement("svg", {
       xmlns: "http://www.w3.org/2000/svg",
@@ -68,12 +88,13 @@ const Sidebar = () => {
       "stroke-linejoin": "round",
       className: "sidebar-listIcon" }, /*#__PURE__*/
 
+    React.createElement("circle", { cx: "12", cy: "12", r: "5" }), /*#__PURE__*/  
+    React.createElement("path", { d: "M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" })), /*#__PURE__*/
     
-    React.createElement("path", { d: "M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" })), /*#__PURE__*/
+    
+    React.createElement("span", { className: "sidebar-themeInputText" }, "Свет")), /*#__PURE__*/
 
-    React.createElement("span", { className: "sidebar-themeInputText" }, "Dark")), /*#__PURE__*/
-
-    React.createElement("div", { className: "sidebar-themeType white" }, /*#__PURE__*/
+    React.createElement("div", { className: "sidebar-themeType dark" }, /*#__PURE__*/
     React.createElement("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       width: "24",
@@ -86,17 +107,16 @@ const Sidebar = () => {
       "stroke-linejoin": "round",
       className: "sidebar-listIcon" }, /*#__PURE__*/
 
+    React.createElement("path", { d: "M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" })), /*#__PURE__*/
+
     
-    React.createElement("circle", { cx: "12", cy: "12", r: "5" }), /*#__PURE__*/  
-    React.createElement("path", { d: "M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" })), /*#__PURE__*/
-    
-    React.createElement("span", { className: "sidebar-themeInputText" }, "Light")))), /*#__PURE__*/
+    React.createElement("span", { className: "sidebar-themeInputText" }, "Тьма")))), /*#__PURE__*/
 
 
 
     React.createElement("ul", { className: "sidebar-list" }, /*#__PURE__*/
     React.createElement("li", { className: "sidebar-listItem active" }, /*#__PURE__*/
-    React.createElement("a", null, /*#__PURE__*/
+    React.createElement("a", { href: "/"}, /*#__PURE__*/
       React.createElement("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         viewBox: "0 0 24 24",
@@ -113,7 +133,7 @@ const Sidebar = () => {
 
 
     React.createElement("li", { className: "sidebar-listItem" }, /*#__PURE__*/
-    React.createElement("a", null, /*#__PURE__*/
+    React.createElement("a", { href: "/about"}, /*#__PURE__*/
     React.createElement("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         viewBox: "0 0 24 24",
@@ -131,7 +151,7 @@ const Sidebar = () => {
 
 
     React.createElement("li", { className: "sidebar-listItem" }, /*#__PURE__*/
-    React.createElement("a", null, /*#__PURE__*/
+    React.createElement("a", { href: "/projects"}, /*#__PURE__*/
     React.createElement("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         viewBox: "0 0 24 24",
@@ -143,12 +163,11 @@ const Sidebar = () => {
         className: "sidebar-listIcon"
       }, /*#__PURE__*/
     React.createElement("path", { d: "M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" })),
-
     React.createElement("span", { className: "sidebar-listItemText" }, "Проекты"))), /*#__PURE__*/
 
 
     React.createElement("li", { className: "sidebar-listItem" }, /*#__PURE__*/
-    React.createElement("a", null, /*#__PURE__*/
+    React.createElement("a", { href: "/contacts"}, /*#__PURE__*/
     React.createElement("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 24 24",

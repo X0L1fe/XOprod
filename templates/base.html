@@ -18,14 +18,18 @@
     
     
     <link rel="icon" href="{% static 'image/Logo_v2.1.png' %}">
-    <title>ＭＥ ＸＯ | {% block title %}{% endblock %}</title>
+    <title>ＸＯ | {% block title %}{% endblock %}</title>
     {%block links%}
     {%endblock%}
 
 </head>
 
 <body ddata-path-to-root="./" data-include-products="false" class="u-body u-overlap u-xl-mode" data-lang="ru">
-    {% include 'base-menu.html' %}
+    <div id="root" class="sidebar-root"></div>
+    
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.production.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.production.min.js'></script>
+    <script  src="{% static 'js/menu.js' %}"></script>
     {% block body %}
     {% endblock %}
     
