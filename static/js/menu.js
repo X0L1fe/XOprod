@@ -13,6 +13,17 @@ const Sidebar = () => {
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
   }, [isDarkMode]);
 
+  useEffect(() => {
+    // Закрываем меню при маленьком экране при загрузке
+    const handleResize = () => {
+      if (window.innerWidth < 576) {
+        setIsShrinkView(true);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   const handleSidebarView = () => {
     setIsShrinkView(!isShrinkView);
   };
