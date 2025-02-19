@@ -335,6 +335,30 @@
   color: var(--text-color) !important; /* Переопределяем цвет ссылок */
 }
 
+@media (max-width: 576px) {
+  .sidebar-container.shrink{
+    background-color: transparent;
+    box-shadow: none;
+    transition: left 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  }
+  
+
+  .sidebar-container.shrink .sidebar-wrapper,
+  .sidebar-container.shrink .sidebar-themeContainer,
+  .sidebar-container.shrink .sidebar-list {
+    visibility: hidden; /* Показываем меню при нажатии */
+
+  }
+  .sidebar-container:not(.shrink) .sidebar-viewButton {
+    right: -10px; /* Стрелка справа с отступом -10px */
+  }
+
+  /* Позиция стрелки в свёрнутом состоянии */
+  .sidebar-container.shrink .sidebar-viewButton {
+    right: 50px; /* Стрелка справа с отступом 20px */
+  }
+}
+
 
 /*begin-commonstyles library*//*!
  * froala_editor v4.0.6 (https://www.froala.com/wysiwyg-editor)

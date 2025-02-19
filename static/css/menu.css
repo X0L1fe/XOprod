@@ -375,26 +375,22 @@
 }
 
 @media (max-width: 576px) {
-  .sidebar-wrapper,
-  .sidebar-themeContainer,
-  .sidebar-list {
-    display: none; /* Скрываем всё кроме кнопки */
+  .sidebar-container.shrink{
+    background-color: transparent;
   }
+  
 
   .sidebar-container.shrink .sidebar-wrapper,
   .sidebar-container.shrink .sidebar-themeContainer,
   .sidebar-container.shrink .sidebar-list {
-    display: block; /* Показываем меню при нажатии */
+    visibility: hidden /* Показываем меню при нажатии */
+  }
+  .sidebar-container:not(.shrink) .sidebar-viewButton {
+    right: -10px; /* Стрелка справа с отступом -10px */
   }
 
-  .sidebar-container {
-    width: auto;
-  }
-
-  .sidebar-viewButton {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    z-index: 1000;
+  /* Позиция стрелки в свёрнутом состоянии */
+  .sidebar-container.shrink .sidebar-viewButton {
+    right: 90px; /* Стрелка справа с отступом 20px */
   }
 }
