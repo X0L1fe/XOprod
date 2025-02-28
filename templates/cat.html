@@ -1,0 +1,169 @@
+<div class="cat">
+    <div class="body"></div>
+    <div class="head">
+      <div class="ear left-ear"></div>
+      <div class="ear right-ear"></div>
+      <div class="eyes">
+        <div class="eye left-eye"></div>
+        <div class="eye right-eye"></div>
+      </div>
+      <div class="nose"></div>
+      <div class="whiskers left-whiskers"></div>
+      <div class="whiskers right-whiskers"></div>
+    </div>
+    <div class="tail"></div>
+  </div>
+
+  <style>
+    body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #8b4513; /* Коричневый фон, как земля в Майнкрафте */
+}
+
+.cat {
+  position: relative;
+  width: 160px;
+  height: 120px;
+}
+
+/* Тело кота */
+.body {
+  width: 80px;
+  height: 60px;
+  background: #ff4500; /* Рыжий цвет */
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 0 2px #000; /* Обводка для пиксельного стиля */
+}
+
+/* Голова кота */
+.head {
+  width: 60px;
+  height: 60px;
+  background: #ff4500;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 0 2px #000;
+}
+
+/* Уши */
+.ear {
+  width: 20px;
+  height: 20px;
+  background: #ff4500;
+  position: absolute;
+  top: -10px;
+  box-shadow: 0 0 0 2px #000;
+  transform-origin: bottom;
+  animation: ear-twitch 2s infinite;
+}
+
+.left-ear {
+  left: -5px;
+  transform: rotate(-20deg);
+}
+
+.right-ear {
+  right: -5px;
+  transform: rotate(20deg);
+}
+
+@keyframes ear-twitch {
+  0%, 100% { transform: rotate(-20deg); }
+  50% { transform: rotate(-10deg); }
+}
+
+/* Глаза */
+.eyes {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.eye {
+  width: 8px;
+  height: 8px;
+  background: #000;
+  box-shadow: 0 0 0 2px #fff; /* Белая обводка для глаз */
+  animation: blink 3s infinite;
+}
+
+@keyframes blink {
+  0%, 95%, 100% { height: 8px; }
+  97% { height: 2px; }
+}
+
+/* Нос */
+.nose {
+  width: 8px;
+  height: 4px;
+  background: #ff6f61;
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 0 2px #000;
+}
+
+/* Усы */
+.whiskers {
+  width: 20px;
+  height: 2px;
+  background: #000;
+  position: absolute;
+  top: 40px;
+}
+
+.left-whiskers {
+  left: -25px;
+  transform: rotate(-20deg);
+}
+
+.right-whiskers {
+  right: -25px;
+  transform: rotate(20deg);
+}
+
+/* Хвост */
+.tail {
+  width: 10px;
+  height: 50px;
+  background: #ff4500;
+  position: absolute;
+  bottom: 10px;
+  right: -20px;
+  transform-origin: bottom;
+  animation: wag 2s infinite;
+  box-shadow: 0 0 0 2px #000;
+}
+
+@keyframes wag {
+  0%, 100% { transform: rotate(0); }
+  50% { transform: rotate(30deg); }
+}
+.paw {
+  width: 10px;
+  height: 10px;
+  background: #ff4500;
+  position: absolute;
+  bottom: -5px;
+  box-shadow: 0 0 0 2px #000;
+}
+.paw.left {
+  left: 10px;
+}
+.paw.right {
+  right: 10px;
+}
+  </style>
