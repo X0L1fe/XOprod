@@ -6,12 +6,18 @@ const Sidebar = () => {
     // По умолчанию тёмная тема, если в localStorage нет значения
     return localStorage.getItem('theme') !== 'light';
   });
-
+  const [activeItem, setActiveItem] = useState(() => {
+    return localStorage.getItem('activePage') || '/'; // По умолчанию "/"
+  });
   // Применяем тему при загрузке компонента и при изменении isDarkMode
   useEffect(() => {
     applyTheme(isDarkMode);
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
   }, [isDarkMode]);
+
+  useEffect(() => {
+    localStorage.setItem('activePage', activeItem); // Сохраняем активную страницу
+  }, [activeItem]);
 
   useEffect(() => {
     // Закрываем меню при маленьком экране при загрузке
@@ -45,6 +51,11 @@ const Sidebar = () => {
   const handleThemeChange = () => {
     const newDarkMode = !isDarkMode; // Инвертируем текущую тему
     setIsDarkMode(newDarkMode); // Обновляем состояние
+  };
+
+  const handleMenuItemClick = (event,path) => {
+    setActiveItem(path);
+    localStorage.setItem('activePage', path);
   };
 
   return /*#__PURE__*/(
@@ -126,8 +137,8 @@ const Sidebar = () => {
 
 
     React.createElement("ul", { className: "sidebar-list" }, /*#__PURE__*/
-    React.createElement("li", { className: "sidebar-listItem active" }, /*#__PURE__*/
-    React.createElement("a", { href: "/"}, /*#__PURE__*/
+    React.createElement("li", { className: `sidebar-listItem${activeItem === '/' ? ' active' : ''}`}, /*#__PURE__*/
+    React.createElement("a", { href: "/", onClick: (event) => handleMenuItemClick( event,'/') }, /*#__PURE__*/
       React.createElement("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         viewBox: "0 0 24 24",
@@ -143,8 +154,8 @@ const Sidebar = () => {
     React.createElement("span", { className: "sidebar-listItemText" }, "Главная"))), /*#__PURE__*/
 
 
-    React.createElement("li", { className: "sidebar-listItem" }, /*#__PURE__*/
-    React.createElement("a", { href: "/about"}, /*#__PURE__*/
+    React.createElement("li", { className: `sidebar-listItem${activeItem === '/about' ? ' active' : ''}` }, /*#__PURE__*/
+    React.createElement("a", { href: "/about", onClick: (event) => handleMenuItemClick(event,'/about') }, /*#__PURE__*/
     React.createElement("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         viewBox: "0 0 24 24",
@@ -161,8 +172,8 @@ const Sidebar = () => {
     React.createElement("span", { className: "sidebar-listItemText" }, "Обо мне"))), /*#__PURE__*/
 
 
-    React.createElement("li", { className: "sidebar-listItem" }, /*#__PURE__*/
-    React.createElement("a", { href: "/projects"}, /*#__PURE__*/
+    React.createElement("li", { className: `sidebar-listItem${activeItem === '/projects' ? ' active' : ''}` }, /*#__PURE__*/
+    React.createElement("a", { href: "/projects", onClick: (event) => handleMenuItemClick(event,'/projects') }, /*#__PURE__*/
     React.createElement("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         viewBox: "0 0 24 24",
@@ -177,8 +188,8 @@ const Sidebar = () => {
     React.createElement("span", { className: "sidebar-listItemText" }, "Проекты"))), /*#__PURE__*/
 
 
-    React.createElement("li", { className: "sidebar-listItem" }, /*#__PURE__*/
-    React.createElement("a", { href: "/contacts"}, /*#__PURE__*/
+    React.createElement("li", { className: `sidebar-listItem${activeItem === '/contacts' ? ' active' : ''}` }, /*#__PURE__*/
+    React.createElement("a", { href: "/contacts", onClick: (event) => handleMenuItemClick(event, '/contacts')}, /*#__PURE__*/
     React.createElement("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 24 24",
@@ -195,7 +206,7 @@ const Sidebar = () => {
 
 
     React.createElement("li", { className: "sidebar-listItem" }, /*#__PURE__*/
-    React.createElement("a", null, /*#__PURE__*/
+    React.createElement("a", { href: "https://github.com/X0L1fe", target: "_blank" }, /*#__PURE__*/
     React.createElement("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         viewBox: "0 0 24 24",
