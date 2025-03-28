@@ -1,10 +1,16 @@
 from django.shortcuts import render
+from .models import Skill
 
 def index(request):
     """
     Отображает главную страницу сайта.
     """
-    return render(request, 'index.html')
+    skills = Skill.objects.all().order_by('order')
+    categories = dict(Skill.CATEGORY_CHOICES)
+    return render(request, 'index.html', {
+        'skills': skills,
+        'categories': categories
+        })
 
 def about(request):
     """

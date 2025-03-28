@@ -1,55 +1,194 @@
-<!DOCTYPE html>
-<html style="font-size: 16px;" lang="ru"><head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta name="keywords" content="Обо мне">
-    <meta name="description" content="">
-    <title>Главная</title>
-    <link rel="stylesheet" href="nicepage.css" media="screen">
-<link rel="stylesheet" href="index.css" media="screen">
-    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
-    <meta name="generator" content="Nicepage 7.3.1, nicepage.com">
-    <meta name="referrer" content="origin">
-    
-    
-    
-    
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400i,700,700i">
-    <script type="application/ld+json">{
-		"@context": "http://schema.org",
-		"@type": "Organization",
-		"name": "XOprod",
-		"logo": "images/Logo_v2.1.png"
-}</script>
-    <meta name="theme-color" content="#478ac9">
-    <meta property="og:title" content="Главная">
-    <meta property="og:type" content="website">
-  <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
-  <body data-home-page="Главная.html" data-home-page-title="Главная" data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="ru">
-    <section class="u-black u-clearfix u-section-1" id="sec-0be2">
-      <div class="u-clearfix u-sheet u-sheet-1"></div>
-    </section>
-    
-    
-    
-    
-    <footer class="u-clearfix u-footer u-grey-80" id="sec-2e04"><div class="u-clearfix u-sheet u-sheet-1">
-        <a href="#" class="u-image u-logo u-image-1" data-image-width="650" data-image-height="650">
-          <img src="images/Logo_v2.1.png" class="u-logo-image u-logo-image-1">
-        </a>
-        <div class="u-language u-language-content-text u-language-layout-icons u-spacing-10 u-language-1">
-          <a class="u-custom-font u-language-top-url u-language-url u-text-hover-grey-60" data-lang-text="RUS" href="./" data-language="ru" style="background-image: none; font-size: 1.25rem; font-family: &quot;Kode Mono&quot;;">
-            <span class="u-icon u-language-icon u-language-ru u-icon-1"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 112 112" x="0px" y="0px" style="width: 1em; height: 1em;"><rect y="16" fill="#F4F4F4" width="112" height="26.7"></rect><rect y="42.7" fill="#323E95" width="112" height="26.7"></rect><rect y="69.3" fill="#D8001E" width="112" height="26.7"></rect></svg></span>
-          </a>
-          <a class="u-custom-font u-language-top-url u-language-url u-text-hover-grey-60" data-lang-text="EN" href="./" data-language="en" style="background-image: none; font-size: 1.25rem; font-family: &quot;Kode Mono&quot;;">
-            <span class="u-icon u-language-en u-language-icon u-icon-2"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 112 112" x="0px" y="0px" style="width: 1em; height: 1em;"><rect y="16" fill="#19237F" width="112" height="80"></rect><path fill="#EDEDED" d="M47.8,16h3.5v33.7H0v-4.8h27.5L0,25.9v-3.8l33.2,22.8h7.7L0,16.8V16h8.8l39,26.9V16z M75,44.9h-7.7L109.4,16
-	h-5.1L65.1,42.9V16h-3.4v33.7H112v-4.8H85.4L112,26.6v-7L75,44.9z M61.7,96h3.4V70.7l37,25.3h9.9v-0.8L73.2,68.7H81l31,21.2v-3.1
-	L85.4,68.7H112v-4.8H61.7V96z M0,68.7h27.5L0,87.7v7.8l39.1-26.8h7.8L7.1,96H11l36.8-25.3V96h3.5V63.9H0V68.7z"></path><path fill="#BD0034" d="M112,16v3.6L75,44.9h-7.7L109.4,16H112z M73.2,68.7L112,95.2v-5.3L81,68.7H73.2z M40.9,44.9L0,16.8v5.3
-	l33.2,22.8C33.2,44.9,40.9,44.9,40.9,44.9z M39.1,68.7L0,95.5V96h7.1l39.8-27.3H39.1z M61.7,16H51.3v33.7H0v14.2h51.3V96h10.4V63.9
-	H112V49.7H61.7V16z"></path></svg></span>
-          </a>
+{% extends 'base.html' %}
+{% load skill_tags %}
+{%block links%}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}" media="screen">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+{%endblock%}
+{% block title %}Главная{% endblock %}
+
+{% block body %}
+<section class="u-black u-clearfix u-section-1" id="sec-0be2">
+  <div class="u-clearfix u-sheet u-sheet-1">
+    <div class="data-layout-selected u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+      <div class="u-layout" style="">
+        <div class="u-layout-col" style="">
+          <div class="u-size-20">
+            <div class="u-layout-row">
+              <div class="u-container-style u-layout-cell u-size-60 u-layout-cell-1">
+                <div class="u-container-layout u-container-layout-1"></div>
+              </div>
+            </div>
+          </div>
+          <div class="u-size-20" style="">
+            <div class="u-layout-row" style="">
+              <div class="u-container-style u-layout-cell u-size-20 u-layout-cell-2">
+                <div class="u-container-layout u-container-layout-2"></div>
+              </div>
+              <div class="u-container-style u-layout-cell u-size-20 u-layout-cell-3">
+                <div class="u-container-layout u-container-layout-3"></div>
+              </div>
+              <div class="u-container-style u-layout-cell u-size-20 u-layout-cell-4">
+                <div class="u-container-layout u-valign-top u-container-layout-4">
+                  <p class="u-text u-text-default u-text-1">
+                    <span class="u-text-palette-1-light-1">if</span>
+                    <span class="u-text-palette-2-light-1">(</span>mood <span
+                      class="u-text-palette-3-dark-1">==&nbsp;</span>
+                    <span class="u-text-palette-4-base">'development'</span>
+                    <span class="u-text-palette-2-light-1">)</span>:<br>&nbsp; &nbsp; <span
+                      class="u-text-palette-3-base">work</span>
+                    <span class="u-text-palette-2-base">(</span>
+                    <span class="u-text-palette-4-base">'project'</span>
+                    <span class="u-text-palette-2-base">)</span>
+                    <br>
+                    <span class="u-text-palette-1-light-1">elif </span>
+                    <span class="u-text-palette-2-base">(</span>mood <span class="u-text-palette-3-dark-1">==</span>
+                    <span class="u-text-palette-4-base">'sad'</span>
+                    <span class="u-text-palette-2-base">)</span>:<br>&nbsp; &nbsp; <span
+                      class="u-text-palette-3-base">take</span>
+                    <span class="u-text-palette-2-base">(</span>
+                    <span class="u-text-palette-4-base">'break'</span>
+                    <span class="u-text-palette-2-base">)</span>
+                    <br>&nbsp; &nbsp; <span class="u-text-palette-3-base">listen</span>
+                    <span class="u-text-palette-2-base">(</span>
+                    <span class="u-text-palette-4-base">'lo-fi music'</span>
+                    <span class="u-text-palette-2-base">)</span>
+                    <br>&nbsp; &nbsp; <span class="u-text-palette-3-base">drink</span>
+                    <span class="u-text-palette-2-base">(</span>
+                    <span class="u-text-palette-4-base">'coffee'</span>
+                    <span class="u-text-palette-2-base">)</span>
+                    <br>
+                    <span class="u-text-palette-1-light-1">else</span>:<br>&nbsp; &nbsp; <span
+                      class="u-text-palette-3-base">take</span>
+                    <span class="u-text-palette-2-base">(</span>
+                    <span class="u-text-palette-4-light-1">'sleep'</span>
+                    <span class="u-text-palette-2-base">)</span>
+                    <br>&nbsp; &nbsp; <span class="u-text-palette-3-base">listen</span>
+                    <span class="u-text-palette-2-base">(</span>
+                    <span class="u-text-palette-4-light-1">'sad music'</span>
+                    <span class="u-text-palette-2-base">) </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="u-size-20">
+            <div class="u-layout-row">
+              <div class="u-container-style u-layout-cell u-size-60 u-layout-cell-5">
+                <div class="u-container-layout u-container-layout-5"></div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div></footer>
-  
-</body></html>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="u-black u-clearfix u-section-2" id="block-1">
+  <div class="u-clearfix u-sheet u-sheet-1">
+    <div class="data-layout-selected u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+      <div class="u-layout">
+        <div class="u-layout-row">
+          <div class="u-container-style u-layout-cell u-size-44 u-layout-cell-1">
+            <div class="u-container-layout u-container-layout-1">
+              <p class="u-text u-text-default u-text-1">Привет! Я [Имя]
+                Junior Python-разработчик, создаю API и веб-приложения.<br>Люблю чистый код и кофе ☕.<br>Стек: Python,
+                Django, DRF, PostgreSQL, Docker&nbsp;<br>
+              </p>
+            </div>
+          </div>
+          <div class="u-container-style u-layout-cell u-size-16 u-layout-cell-2">
+            <div class="u-container-layout u-valign-top u-container-layout-2">
+              <p class="u-text u-text-default u-text-2">
+                <span class="u-text-palette-1-light-1">if</span>
+                <span class="u-text-palette-2-light-1">(</span>mood <span
+                  class="u-text-palette-3-dark-1">==&nbsp;</span>
+                <span class="u-text-palette-4-base">'development'</span>
+                <span class="u-text-palette-2-light-1">)</span>:<br>&nbsp; &nbsp; <span
+                  class="u-text-palette-3-base">work</span>
+                <span class="u-text-palette-2-base">(</span>
+                <span class="u-text-palette-4-base">'project'</span>
+                <span class="u-text-palette-2-base">)</span>
+                <br>
+                <span class="u-text-palette-1-light-1">elif </span>
+                <span class="u-text-palette-2-base">(</span>mood <span class="u-text-palette-3-dark-1">==</span>
+                <span class="u-text-palette-4-base">'sad'</span>
+                <span class="u-text-palette-2-base">)</span>:<br>&nbsp; &nbsp; <span
+                  class="u-text-palette-3-base">take</span>
+                <span class="u-text-palette-2-base">(</span>
+                <span class="u-text-palette-4-base">'break'</span>
+                <span class="u-text-palette-2-base">)</span>
+                <br>&nbsp; &nbsp; <span class="u-text-palette-3-base">listen</span>
+                <span class="u-text-palette-2-base">(</span>
+                <span class="u-text-palette-4-base">'lo-fi music'</span>
+                <span class="u-text-palette-2-base">)</span>
+                <br>&nbsp; &nbsp; <span class="u-text-palette-3-base">drink</span>
+                <span class="u-text-palette-2-base">(</span>
+                <span class="u-text-palette-4-base">'coffee'</span>
+                <span class="u-text-palette-2-base">)</span>
+                <br>
+                <span class="u-text-palette-1-light-1">else</span>:<br>&nbsp; &nbsp; <span
+                  class="u-text-palette-3-base">take</span>
+                <span class="u-text-palette-2-base">(</span>
+                <span class="u-text-palette-4-light-1">'sleep'</span>
+                <span class="u-text-palette-2-base">)</span>
+                <br>&nbsp; &nbsp; <span class="u-text-palette-3-base">listen</span>
+                <span class="u-text-palette-2-base">(</span>
+                <span class="u-text-palette-4-light-1">'sad music'</span>
+                <span class="u-text-palette-2-base">) </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="u-black u-clearfix u-section-3" id="block-2">
+  <div class="u-clearfix u-sheet u-sheet-1">
+    <div class="data-layout-selected u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+      <div class="u-layout">
+        <div class="u-layout-row">
+          <div
+            class="u-container-align-center-md u-container-align-center-sm u-container-align-center-xs u-container-style u-layout-cell u-size-25-lg u-size-25-xl u-size-60-md u-size-60-sm u-size-60-xs u-layout-cell-1">
+            <div
+              class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-container-layout-1">
+              <h2
+                class="u-align-center-md u-align-center-sm u-align-center-xs u-align-left-lg u-align-left-xl u-text u-text-1">
+                Технологический стэк </h2>
+              <p
+                class="u-align-center-md u-align-center-sm u-align-center-xs u-align-left-lg u-align-left-xl u-text u-text-default u-text-2">
+                Технологический стэк разработчика включает язык программирования Python и фронтенд-разработку с
+                использованием HTML, CSS, JavaScript. Для работы с изображениями используется библиотека Pillow.</p>
+              <a href="#"
+                class="u-align-center-md u-align-center-sm u-align-center-xs u-align-left-lg u-align-left-xl u-btn u-button-style u-palette-1-base u-btn-1">Читать
+                далее</a>
+            </div>
+          </div>
+
+          <section class="skills-section">
+            
+            <h2>Мои навыки</h2>
+
+            <div class="skills-carousel">
+              {% for category, category_name in categories.items %}
+              <div class="skill-category">
+                <h3>{{ category_name }}</h3>
+                <div class="skills-grid">
+                  {% for skill in skills %}
+                  {% if skill.category == category %}
+                  
+                  <div class="skill-card">
+                    {% render_skill_icon skill %}
+                    <span>{{ skill.name }}</span>
+                  </div>
+                  {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </section>
+</section>
+{% endblock %}
