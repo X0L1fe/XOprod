@@ -11,7 +11,6 @@ class Skill(models.Model):
     
     name = models.CharField(max_length=100, verbose_name="Название")
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, verbose_name="Категория")
-    icon = models.CharField(max_length=50, blank=True, help_text="Название иконки (например, fab fa-python)")
     order = models.PositiveIntegerField(default=0, verbose_name="Порядок сортировки")
 
     devicon_class = models.CharField(
@@ -31,7 +30,7 @@ class Skill(models.Model):
     
     # Для кастомных SVG
     custom_icon = models.FileField(
-        upload_to='skills/icons/',
+        upload_to='./static/icons/',
         blank=True,
         null=True,
         verbose_name="Кастомная иконка (SVG)"
