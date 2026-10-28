@@ -1,2 +1,13 @@
-.venv
-__pycache__
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+db.sqlite3
+media/
+staticfiles/
+frontend/node_modules/
+frontend/dist/
+.DS_Store
